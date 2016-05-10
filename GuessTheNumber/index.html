@@ -1,23 +1,37 @@
 ﻿<!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml">
+<html ng-app="guessTheNumber">
 <head>
     <title>Guess The Number</title>
     <link href="Content/bootstrap.min.css" rel="stylesheet" />
 </head>
 <body>
-    <div class="container">
-        <h1>Guess the Mumber!</h1>
-        <h3>Guess the computer generated random number between 1 and 1000</h3>
-        <form method="post" class="form-inline">
-            <div class="form-group">
-                <label for="guess">Your Guess:</label>
-                <input type="number" name="guess" required/>
-                <input type="submit" value="Verify" class="btn btn-primary" />
-                <input type="button" value="Restart" class="btn btn-warning"/>
-            </div>
-        </form>
+    <div class="container" ng-controller="guessTheNumberController as vm">
+        <h1>Guess the Number!</h1>
+        <div class="well lead">
+            <h3>Guess the computer generated random number between 1 and 1000</h3>
+            <form method="post" class="form-inline">
+                <div class="form-group">
+                    <label for="guess">Your Guess:</label>
+                    <input type="number" name="guess" required ng-model="vm.guess" />
+                    <input type="submit" value="Verify" class="btn btn-primary" ng-click="vm.verifyGuess()" />
+                    <input type="button" value="Restart" class="btn btn-warning" ng-click="vm.initializeGame()" />
+                </div>
+            </form>
+        </div>
+        <div>
+            <p ng-show="vm.deviation < 0" class="alert alert-warning">Your guess is higher.</p>
+            <p ng-show="vm.deviation > 0" class="alert alert-warning">Your guess is lower.</p>
+            <p ng-show="vm.deviation===0" class="alert alert-success">Yes! That"s it.</p>
+            <p class="text-info">No of guesses : <span class="badge">{{vm.noOfTries}}</span>
+        </div>
     </div>
     <script src="Scripts/jquery-2.2.3.min.js"></script>
     <script src="Scripts/angular.min.js"></script>
+
+    <!--application scripts-->
+    <!--Module-->
+    <script src="app/app.js"></script>
+    <!--Controller-->
+    <script src="app/guessTheNumberController.js"></script>
 </body>
 </html>
