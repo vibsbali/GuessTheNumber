@@ -12,8 +12,10 @@
         };
 
         vm.verifyGuess = function () {
-            vm.deviation = vm.original - vm.guess;
-            ++vm.noOfTries;
+            if (typeof (vm.guess) == "number") {
+                vm.deviation = vm.original - vm.guess;
+                ++vm.noOfTries;
+            }            
         };
         vm.initializeGame();
     });
