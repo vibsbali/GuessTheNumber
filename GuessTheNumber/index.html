@@ -2,9 +2,22 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
     <title>Guess The Number</title>
+    <link href="Content/bootstrap.min.css" rel="stylesheet" />
 </head>
 <body>
-
-
+    <div class="container">
+        <h1>Guess the Mumber!</h1>
+        <h3>Guess the computer generated random number between 1 and 1000</h3>
+        <form method="post" class="form-inline">
+            <div class="form-group">
+                <label for="guess">Your Guess:</label>
+                <input type="number" name="guess" required/>
+                <input type="submit" value="Verify" class="btn btn-primary" />
+                <input type="button" value="Restart" class="btn btn-warning"/>
+            </div>
+        </form>
+    </div>
+    <script src="Scripts/jquery-2.2.3.min.js"></script>
+    <script src="Scripts/angular.min.js"></script>
 </body>
 </html>
